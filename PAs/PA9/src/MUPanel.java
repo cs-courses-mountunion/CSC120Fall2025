@@ -40,10 +40,10 @@ public class MUPanel extends JPanel implements ActionListener, ItemListener {
         fileChooser.add("flowers.jpg");
         fileChooser.add("swanFace.jpg");
         fileChooser.add("DONOTLOCK.jpg");
-        fileChooser.add("golf1.jpg");
         fileChooser.add("golf2.jpg");
         fileChooser.add("MarkerBoard2.jpg");
-        fileChooser.add("symmetricGates.jpg");
+
+        /* ---- Don't change the next three lines ---- */
         fileChooser.setBounds(20, 400, 400, 20);
         fileChooser.addItemListener(this);
         add(fileChooser);
@@ -191,3 +191,4 @@ public class MUPanel extends JPanel implements ActionListener, ItemListener {
     public static void main(String args[]){new MUPanel();}
 
 } // end of class MUPanel
+
