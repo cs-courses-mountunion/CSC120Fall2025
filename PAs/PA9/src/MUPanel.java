@@ -63,6 +63,29 @@ public class MUPanel extends JPanel implements ActionListener, ItemListener {
     } // end of paintComponent()
     
     @Override
+    public void itemStateChanged(ItemEvent e) {
+        String filename = fileChooser.getSelectedItem();
+        if (!filename.equals("--Choose a file--")) {
+            loadPicture(filename);
+            repaint();                  // jfk
+        } // end if
+
+    } // end of itemStateChanged()
+    
+    public void loadPicture(String filename) {
+        originalPicture = new Picture(filename);
+        currentPicture = new Picture(filename);
+        
+        ImageIcon icon = new ImageIcon();
+        icon.setImage(currentPicture.getBufferedImage());
+
+        imageLabel.setIcon(icon);
+    } // end of loadPicture()
+
+
+
+
+    @Override
     public void actionPerformed(ActionEvent ae) {
         Object source = ae.getSource();
         
@@ -82,25 +105,8 @@ public class MUPanel extends JPanel implements ActionListener, ItemListener {
         
     } // end of actionPerformed
     
-    @Override
-    public void itemStateChanged(ItemEvent e) {
-        String filename = fileChooser.getSelectedItem();
-        if (!filename.equals("--Choose a file--")) {
-            loadPicture(filename);
-            repaint();                  // jfk
-        } // end if
 
-    } // end of itemStateChanged()
-    
-    public void loadPicture(String filename) {
-        originalPicture = new Picture(filename);
-        currentPicture = new Picture(filename);
-        
-        ImageIcon icon = new ImageIcon();
-        icon.setImage(currentPicture.getBufferedImage());
 
-        imageLabel.setIcon(icon);
-    } // end of loadPicture()
     
     public final void createButtons() {
         int numButtons = 16;
@@ -136,6 +142,9 @@ public class MUPanel extends JPanel implements ActionListener, ItemListener {
         buttons[0].setBackground(Color.GREEN);
         
     } // end of createButtons()
+
+
+
     
     public void doRestoreImage() {
        Pixel[][] origPixels = originalPicture.getThePixels();
@@ -191,4 +200,5 @@ public class MUPanel extends JPanel implements ActionListener, ItemListener {
     public static void main(String args[]){new MUPanel();}
 
 } // end of class MUPanel
+
 
